@@ -10,21 +10,40 @@ class IntHolder {
     private int value;
 
     public int getValue() {
-        return 0;
+        return value;
     }
 
-    public void swap(IntHolder other) {}
+    public void swap(IntHolder other) {
+        int temp = this.value;
+        this.value = other.value;
+        other.value = temp;
+    }
 
-    public IntHolder(int value) {}
+    public IntHolder(int value) {
+        this.value = value;
+    }
 
-    public static IntHolder valueOf(int x) { return null; }
+    public static IntHolder valueOf(int x) { 
+        return new IntHolder(x); 
+    }
 
-    public IntHolder plus(IntHolder rhv) { return null; }
+    public IntHolder plus(IntHolder rhv) {
+        return new IntHolder(this.value + rhv.value); 
+    }
 
-    public IntHolder minus(IntHolder rhv) { return null; }
+    public IntHolder minus(IntHolder rhv) { 
+        return new IntHolder(this.value - rhv.value);
+    }
 
-    public IntHolder times(IntHolder rhv) { return null; }
-    public IntHolder div(IntHolder rhv) { return null; }
+    public IntHolder times(IntHolder rhv) {
+        return new IntHolder(this.value * rhv.value);
+    }
+    public IntHolder div(IntHolder rhv) { 
+        if (thv.value == 0){
+            throw new Exception("деление на нуль, нельзя")
+        }
+        return new IntHolder(this.value / thv.value);
+    }
 
 }
 
