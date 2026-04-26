@@ -10,6 +10,23 @@ import org.junit.jupiter.api.Test;
 
 public class FunctionalTest {
 
+    public static <T, R> List<R> map(List<? extends T> list, Function<? super T, ? extends R> func){
+        List<R> result = new java.util.ArrayList<>();
+        for (T element : list){
+            result.add(func.apply(element));
+        }
+        return result;
+    }
+
+    public static <T> T reduce(List<T> list, java.util.function.BinaryOperation<T> op, T initial){
+        T result = initial;
+
+        for (T element : list){
+            result = op.apply(result, element);
+        }
+        return result;
+    }
+
     @Test
     public void mapWorks() {
         Function<Integer, Integer> func = x -> x * x;
