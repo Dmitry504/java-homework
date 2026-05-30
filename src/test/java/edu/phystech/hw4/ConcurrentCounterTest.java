@@ -19,9 +19,13 @@ import org.junit.jupiter.api.Test;
  */
 class ConcurrentCounter {
     private long value = 0;
-    void increment() {}
+    synchronized void increment() {
+        value++;
+    }
 
-    long getValue() { return 0; }
+    synchronized long getValue() { 
+        return value;
+    }
 }
 
 
