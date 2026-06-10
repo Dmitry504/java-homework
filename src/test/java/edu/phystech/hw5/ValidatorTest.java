@@ -6,13 +6,14 @@ import edu.phystech.hw5.exception.ValidationException;
 import edu.phystech.hw5.service.Validator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import edu.phystech.hw5.service.ValidatorImpl;
 
 /**
  * @author kzlv4natoly
  */
 public class ValidatorTest {
 
-    private Validator validator = object -> {
+    private Validator validator = object -> new ValidatorImpl(){
     };
 
     @Test
