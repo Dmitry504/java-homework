@@ -6,6 +6,27 @@ import java.util.stream.Stream;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
+public record Contact(String username, String email) implements Comparable<Contact>{
+    public final String UNKNOWN_EMAIL = "example@gmail.com";
+
+    public Contact(String username){
+        this(username, UNKNOWN_EMAIL)
+    }
+
+    public Contact{
+        if (username == null || username.trim().isEmpty()){
+            throw new InvalidContactFieldException("username");
+        }
+
+        if (email == null || email.trim().isEmpty()){
+            throw new InvalidContactFieldException("email");
+        }
+    }
+
+    public int compareTo(Contact other){
+        return Integer.compare(this.username.lenght(), other.username.lenght())
+    }
+}
 
 public class ContactTest {
 
