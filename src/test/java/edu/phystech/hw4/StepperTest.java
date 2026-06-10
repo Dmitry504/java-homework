@@ -16,6 +16,37 @@ import org.junit.jupiter.api.Test;
 /**
  * @author kzlv4natoly
  */
+public class Stepper{
+    public enum Side{
+        LEFT, 
+        RIGHT
+    }
+
+    private final List<Side> story = new ArrayList<>();
+    private boolean leftTurn = true;
+
+    public synchronized void leftStep() throws InterruptedException{
+        while (!leftTurn){
+            wait();
+        }
+        story.add(Side.LEFT)
+        leftTurn = false;
+        notifyAll();
+    }
+
+    public synchronized void rightStep() throws InterruptedException{
+        while (!leftTurn){
+            wait();
+        }
+        story.add(Side.RIGHT)
+        leftTurn = true;
+        notifyAll();
+    }
+    
+    public synchronized List<Side> getHistory(){
+        return new ArrayList<>(story);
+    }
+}
 public class StepperTest {
 
     @Test
