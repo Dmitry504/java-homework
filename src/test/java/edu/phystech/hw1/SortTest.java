@@ -8,7 +8,18 @@ import org.junit.jupiter.api.Assertions;
 public class SortTest {
 
     private static int[] sort(int[] nums) {
-        return nums;
+        int n = nums.length;
+        for (int i = 0; i < n - 1; i++){
+            for (int j = 0; j < n - 1; j++){
+                if (nums[j] > nums[j + 1]){
+                    int swap = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = swap;
+                }
+            }
+        }
+
+        return 0; // хотел написать quicksort в память его создателя, но мне лень:(
     }
 
     @Test
